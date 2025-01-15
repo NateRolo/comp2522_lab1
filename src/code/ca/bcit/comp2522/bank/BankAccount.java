@@ -7,6 +7,7 @@ public class BankAccount
     private final Date accountOpened;
     private final Date accountClosed;
     private final int pin;
+
     private double balanceUsd;
 
     public BankAccount(final BankClient client,
@@ -31,7 +32,11 @@ public class BankAccount
                        final double balanceUsd)
     {
         this(client,
-                accountNumber, accountOpened, null, pin, balanceUsd);
+             accountNumber,
+             accountOpened,
+             null,
+             pin,
+             balanceUsd);
     }
 
     public void deposit(final double depositUsd, final int pinToMatch)

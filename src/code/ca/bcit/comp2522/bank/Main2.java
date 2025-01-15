@@ -51,8 +51,7 @@ public class Main2 {
                 new Date(1950, 10, 14),
                 3141,
                 1000,
-                100
-                                   );
+                100);
 
         setupAndPrintAccountDetails(
                 new Name("Nelson", "Mandela"),
@@ -63,8 +62,7 @@ public class Main2 {
                 null, // Account is still open
                 4664,
                 2000,
-                200
-                                   );
+                200);
 
         setupAndPrintAccountDetails(
                 new Name("Frida", "Kahlo"),
@@ -75,8 +73,7 @@ public class Main2 {
                 new Date(1954, 7, 13),
                 1907,
                 500,
-                50
-                                   );
+                50);
 
         setupAndPrintAccountDetails(
                 new Name("Jackie", "Chan"),
@@ -87,8 +84,7 @@ public class Main2 {
                 null, // Account is still open
                 1954,
                 3000,
-                500
-                                   );
+                500);
     }
 
 

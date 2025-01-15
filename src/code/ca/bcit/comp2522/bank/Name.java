@@ -119,6 +119,5 @@ public class Name
         {
             throw new IllegalArgumentException("Name cannot contain the word 'admin'.");
         }
-
     }
 }

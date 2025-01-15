@@ -33,25 +33,24 @@ public class BankClient
         this(name, birthDate, null, signUpDate, clientID);
     }
 
-    // Tiger Woods client #12345 (alive) joined the bank on thursday, September 3, 2020"
+
     public String getDetails() {
 
         final StringBuilder detailsBuilder;
         final String fullName;
-        final String client;
+
         final String clientID;
         final String isAliveStatus;
-        final String joinedMessage;
+
         final String dayOfWeek;
         final String month;
         final int day;
         final int year;
 
         fullName = this.name.getFullName();
-        client = " client ";
         clientID = this.clientID;
         isAliveStatus = this.isAlive();
-        joinedMessage = " joined the bank on ";
+
         dayOfWeek = signUpDate.getDayOfTheWeek();
         month = signUpDate.getMonth();
         day = signUpDate.getDay();
@@ -61,11 +60,11 @@ public class BankClient
 
         // StringBuilder usage
         detailsBuilder.append(fullName)
-                      .append(client)
+                      .append(" client ")
                       .append(clientID)
                       .append(" ")
                       .append(isAliveStatus)
-                      .append(joinedMessage)
+                      .append(" joined the bank on ")
                       .append(dayOfWeek)
                       .append(", ")
                       .append(month)
@@ -93,12 +92,10 @@ public class BankClient
     {
         if (this.deathDate == null)
         {
-            return aliveMessage; // refactor
-        } else
-        {
-            return notAliveMessage; // refactor
+            return aliveMessage;
         }
 
+        return notAliveMessage;
     }
 
 }
