@@ -1,7 +1,39 @@
 package ca.bcit.comp2522.bank;
 
+/**
+ * The Main class serves as the entry point for the banking system simulation.
+ * It sets up and prints account details for various bank clients using
+ * the {@link Name}, {@link Date}, {@link BankClient}, and {@link BankAccount} classes.
+ * Each client's account is created, detailed information is printed, and a withdrawal operation is performed.
+ * <p>
+ * The class includes four distinct client setups:
+ * <ul>
+ *     <li>Albert Einstein</li>
+ *     <li>Nelson Mandela</li>
+ *     <li>Frida Kahlo</li>
+ *     <li>Jackie Chan</li>
+ * </ul>
+ * </p>
+ *
+ * @author Nathan Oloresisimo
+ * @version 1.0
+ */
 public class Main
 {
+    /**
+     * The main method is the entry point for the banking system simulation.
+     * It calls methods to set up and print account details for each client.
+     * <p>
+     * The clients and their details are:
+     * <ul>
+     *     <li>Albert Einstein (account closed)</li>
+     *     <li>Nelson Mandela (account still open)</li>
+     *     <li>Frida Kahlo (account closed)</li>
+     *     <li>Jackie Chan (account still open)</li>
+     * </ul>
+     * </p>
+     * @param args command-line arguments (not used).
+     */
     public static void main(final String[] args)
     {
         einsteinSetupAndPrintAccountDetails();
@@ -9,10 +41,9 @@ public class Main
         kahloSetupAndPrintAccountDetails();
         chanSetupAndPrintAccountDetails();
     }
-
+    // Albert Einstein's account details
     private static void einsteinSetupAndPrintAccountDetails()
     {
-
         final Name        albertEinstein;
         final Date        aeBirthDate;
         final Date        aeDeathDate;
@@ -64,7 +95,7 @@ public class Main
 
         withdrawalAmount = 100;
 
-        // Using StringBuilder for output
+
 
         outputBuilder = new StringBuilder();
 
@@ -78,17 +109,16 @@ public class Main
 
         System.out.println(aeFullDetails);
 
-        // Withdrawal
+
         aeBankAccount.withdraw(withdrawalAmount, aePin);
     }
     // Nelson Mandela's Account Details
     private static void mandelaSetupAndPrintAccountDetails() {
-        // Variable declarations
         final Name nelsonMandela;
         final Date nmBirthDate;
         final Date nmDeathDate;
         final Date nmAccountOpenedDate;
-        final Date nmAccountClosedDate; // Account is still open
+        final Date nmAccountClosedDate;
         final int nmPin;
         final int nmBalanceUsd;
         final String nmAccountNumber;
@@ -106,7 +136,6 @@ public class Main
 
         final int withdrawalAmount;
 
-        // Variable instantiations
         nelsonMandela      = new Name("Nelson", "Mandela");
         nmBirthDate        = new Date(1918, 7, 18);
         nmDeathDate        = new Date(2013, 12, 5);
@@ -149,13 +178,13 @@ public class Main
 
         System.out.println(nmFullDetails);
 
-        // Withdrawal
+
         nmBankAccount.withdraw(withdrawalAmount, nmPin);
     }
 
     // Frida Kahlo's Account Details
-    private static void kahloSetupAndPrintAccountDetails() {
-        // Variable declarations
+    private static void kahloSetupAndPrintAccountDetails()
+    {
         final Name fridaKahlo;
         final Date fkBirthDate;
         final Date fkDeathDate;
@@ -178,7 +207,7 @@ public class Main
 
         final int withdrawalAmount;
 
-        // Variable instantiations
+
         fridaKahlo        = new Name("Frida", "Kahlo");
         fkBirthDate       = new Date(1907, 7, 6);
         fkDeathDate       = new Date(1954, 7, 13);
@@ -209,8 +238,6 @@ public class Main
 
         withdrawalAmount = 50;
 
-        // Using StringBuilder for output
-
         outputBuilder = new StringBuilder();
 
         outputBuilder.append(fkInitials).append("\n")
@@ -222,17 +249,17 @@ public class Main
         fkFullDetails = outputBuilder.toString();
         System.out.println(fkFullDetails);
 
-        // Withdrawal
+
         fkBankAccount.withdraw(withdrawalAmount, fkPin);
     }
 
     // Jackie Chan's Account Details
-    private static void chanSetupAndPrintAccountDetails() {
-        // Variable declarations
+    private static void chanSetupAndPrintAccountDetails()
+    {
         final Name jackieChan;
         final Date jcBirthDate;
         final Date jcAccountOpenedDate;
-        final Date jcAccountClosedDate; // Account is still open
+        final Date jcAccountClosedDate;
         final int jcPin;
         final int jcBalanceUsd;
         final String jcAccountNumber;
@@ -250,7 +277,7 @@ public class Main
 
         final int withdrawalAmount;
 
-        // Variable instantiations
+
         jackieChan        = new Name("Jackie", "Chan");
         jcBirthDate       = new Date(1954, 4, 7);
         jcAccountOpenedDate = new Date(1980, 10, 1);
@@ -279,8 +306,6 @@ public class Main
 
         withdrawalAmount = 500;
 
-        // Using StringBuilder for output
-
         outputBuilder = new StringBuilder();
 
         outputBuilder.append(jcInitials).append("\n")
@@ -293,11 +318,6 @@ public class Main
 
         System.out.println(jcFullDetails);
 
-        // Withdrawal
         jcBankAccount.withdraw(withdrawalAmount, jcPin);
     }
-
-
-
-
 }

@@ -1,7 +1,46 @@
 package ca.bcit.comp2522.bank;
 
+/**
+ * The Main2 class demonstrates a banking system simulation by setting up and printing
+ * details for various bank clients using the {@link Name}, {@link Date}, {@link BankClient},
+ * and {@link BankAccount} classes. Each client’s account is initialized, detailed information
+ * is printed to the console, and a withdrawal operation is performed.
+ * <p>
+ * The class includes four distinct client setups:
+ * <ul>
+ *     <li>Albert Einstein</li>
+ *     <li>Nelson Mandela</li>
+ *     <li>Frida Kahlo</li>
+ *     <li>Jackie Chan</li>
+ * </ul>
+ * </p>
+ *
+ * @author Nathan Oloresisimo
+ * @version 1.0
+ */
 public class Main2 {
 
+    /**
+     * <p>
+     * The main method serves as the entry point for the banking system simulation.
+     * It sets up and prints account details for various clients by calling the
+     * {@link #setupAndPrintAccountDetails(Name, Date, Date, String, Date, Date, int, double, int)} method.
+     * </p>
+     * <p>
+     * Each client's setup includes their name, birth date, death date (if applicable), account number,
+     * account opening and closing dates, PIN, initial balance, and a withdrawal amount.
+     * </p>
+     *
+     * The clients and their details are:
+     * <ul>
+     *     <li>Albert Einstein - Account closed in 1950</li>
+     *     <li>Nelson Mandela - Account still open</li>
+     *     <li>Frida Kahlo - Account closed in 1954</li>
+     *     <li>Jackie Chan - Account still open</li>
+     * </ul>
+     *
+     * @param args command-line arguments (not used).
+     */
     public static void main(final String[] args) {
         setupAndPrintAccountDetails(
                 new Name("Albert", "Einstein"),
