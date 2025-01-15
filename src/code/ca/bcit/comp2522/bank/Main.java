@@ -76,7 +76,7 @@ public class Main
 
         aeFullDetails = outputBuilder.toString();
 
-        System.out.println(outputBuilder.toString());
+        System.out.println(aeFullDetails);
 
         // Withdrawal
         aeBankAccount.withdraw(withdrawalAmount, aePin);
