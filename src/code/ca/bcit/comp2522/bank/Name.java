@@ -9,12 +9,10 @@ package ca.bcit.comp2522.bank;
 public class Name
 {
     private static final int MAX_NAME_LENGTH = 45;
-    private static final int FIRST_INDEX = 0;
-    private static final int SECOND_INDEX = 1;
+    private static final int FIRST_LETTER = 0;
+    private static final int SECOND_LETTER = 1;
     private static final String SPACE = " ";
     private static final String INVALID_NAME = "admin";
-
-    private static StringBuilder builder;
 
     private final String firstName;
     private final String lastName;
@@ -44,13 +42,15 @@ public class Name
         final char lastNameInitial;
         final String fullInitials;
 
-        firstNameInitial = this.firstName.charAt(FIRST_INDEX);
-        lastNameInitial = this.lastName.charAt(FIRST_INDEX);
+        final StringBuilder builder;
+
+        firstNameInitial = this.firstName.charAt(FIRST_LETTER);
+        lastNameInitial = this.lastName.charAt(FIRST_LETTER);
         builder = new StringBuilder();
-        builder.append(firstNameInitial);
-        builder.append(".");
-        builder.append(lastNameInitial);
-        builder.append(".");
+        builder.append(firstNameInitial)
+                .append(".")
+                .append(lastNameInitial)
+                .append(".");
         fullInitials = builder.toString();
 
         return fullInitials;
@@ -68,10 +68,16 @@ public class Name
         final String lastNameBody;
         final String fullNameFormatted;
 
-        firstNameInitial = firstName.substring(FIRST_INDEX, SECOND_INDEX);
-        lastNameInitial = lastName.substring(FIRST_INDEX, SECOND_INDEX);
-        firstNameBody = firstName.substring(SECOND_INDEX);
-        lastNameBody = lastName.substring(SECOND_INDEX);
+        final StringBuilder builder;
+
+        firstNameInitial = firstName.substring(FIRST_LETTER, SECOND_LETTER)
+                                    .toUpperCase();
+        lastNameInitial = lastName.substring(FIRST_LETTER, SECOND_LETTER)
+                                  .toUpperCase();
+        firstNameBody = firstName.substring(SECOND_LETTER)
+                                 .toLowerCase();
+        lastNameBody = lastName.substring(SECOND_LETTER)
+                               .toLowerCase();
 
         builder = new StringBuilder();
         builder.append(firstNameInitial)
@@ -86,6 +92,7 @@ public class Name
 
     public String getReverseName()
     {
+        final StringBuilder builder;
         final String reversedFullName;
 
         builder = new StringBuilder();
@@ -100,9 +107,18 @@ public class Name
 
     private static void validateName(final String name)
     {
-        if (name == null || name.isBlank() || name.length() > MAX_NAME_LENGTH || name.contains(INVALID_NAME))
+        if (name == null || name.isBlank())
         {
-            throw new IllegalArgumentException("bad name: " + name);
+            throw new IllegalArgumentException("Name cannot be null or blank.");
         }
+        if (name.length() > MAX_NAME_LENGTH)
+        {
+            throw new IllegalArgumentException("Name exceeds maximum length of " + MAX_NAME_LENGTH + " characters.");
+        }
+        if (name.toLowerCase().contains(INVALID_NAME))
+        {
+            throw new IllegalArgumentException("Name cannot contain the word 'admin'.");
+        }
+
     }
 }
