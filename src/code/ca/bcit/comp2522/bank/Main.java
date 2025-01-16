@@ -17,6 +17,7 @@ package ca.bcit.comp2522.bank;
  *
  * @author Haider Al-Sudani, Arsh Mokha, Nathan Oloresisimo
  * @version 1.0
+ *
  */
 public class Main
 {
