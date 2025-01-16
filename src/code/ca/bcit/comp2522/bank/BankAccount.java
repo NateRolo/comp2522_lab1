@@ -15,7 +15,7 @@ package ca.bcit.comp2522.bank;
  *     account.withdraw(100.0, 1234);
  * </pre>
  *
- * @author Nathan Oloresisimo
+ * @author Haider Al-Sudani, Arsh Mokha, Nathan Oloresisimo
  * @version 1.0
  */
 public class BankAccount
@@ -84,7 +84,6 @@ public class BankAccount
      *
      * @param depositUsd the amount to deposit in USD.
      * @param pinToMatch the PIN for verification.
-     * @throws IllegalArgumentException if the PIN is incorrect.
      */
     public void deposit(final double depositUsd, final int pinToMatch)
     {
@@ -107,7 +106,6 @@ public class BankAccount
      *
      * @param amountUsd the amount to withdraw in USD.
      * @param pinToMatch the PIN for verification.
-     * @throws IllegalArgumentException if the PIN is incorrect or if the balance is insufficient.
      */
     public void withdraw(final double amountUsd, final int pinToMatch)
     {
@@ -127,8 +125,12 @@ public class BankAccount
     /*
      * Retrieves the current balance in USD without PIN verification.
      */
-    private double getBalance()
+    public double getBalance(final int pinToMatch)
     {
+        if (pinToMatch != pin)
+        {
+            throw new IllegalArgumentException("Incorrect pin: " + pinToMatch);
+        }
         return balanceUsd;
     }
 

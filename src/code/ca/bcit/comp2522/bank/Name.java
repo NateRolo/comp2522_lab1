@@ -13,7 +13,7 @@ package ca.bcit.comp2522.bank;
  *     String initials = name.getInitials();  // Output: J.D.
  * </pre>
  *
- * @author Nathan Oloresisimo
+ * @author Haider Al-Sudani, Arsh Mokha, Nathan Oloresisimo
  * @version 1.0
  */
 public class Name
@@ -32,7 +32,6 @@ public class Name
      *
      * @param firstName the first name of the individual.
      * @param lastName the last name of the individual.
-     * @throws IllegalArgumentException if the first or last name is invalid.
      */
     public Name(final String firstName,
                 final String lastName)
@@ -173,7 +172,6 @@ public class Name
      * - Cannot contain the invalid substring "admin".
      *
      * @param name the name to validate.
-     * @throws IllegalArgumentException if the name is invalid.
      */
     private static void validateName(final String name)
     {

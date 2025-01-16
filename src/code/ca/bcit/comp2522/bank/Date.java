@@ -37,7 +37,7 @@ package ca.bcit.comp2522.bank;
  *   <li>Invalid dates throw {@link IllegalArgumentException} during construction.</li>
  * </ul>
  *
- * @author Nathan Oloresisimo
+ * @author Haider Al-Sudani, Arsh Mokha, Nathan Oloresisimo
  * @version 1.0
  */
 public class Date
@@ -107,7 +107,6 @@ public class Date
      * @param year  the year of the date (must be between 1800 and the current year)
      * @param month the month of the date (1 = January, 12 = December)
      * @param day   the day of the month (validated for month/year constraints)
-     * @throws IllegalArgumentException if the year, month, or day is invalid
      */
     public Date(final int year,
                 final int month,
@@ -252,13 +251,12 @@ public class Date
 //      step 3: calculate the number of fours in step 2: 5/4 = 1.25, so
         numOfFoursInRemainder = yearRemainderAfterTwelves / DIVISOR_FOR_FOURS_IN_REMAINDER;
 
-//      step 4: add the day of the month to each step above: 31 + 6 + 5 + 1 =
-        totalWithoutMonthCode = numberOfTwelvesInYear +
-                                yearRemainderAfterTwelves +
+        // step 4: add the day of the month to each step above: 31 + 6 + 5 + 1 =
+        totalWithoutMonthCode = numberOfTwelvesInYear + yearRemainderAfterTwelves +
                                 numOfFoursInRemainder +
                                 dayOfMonth;
 
-//      step 5: add the month code (for jfmamjjasond: 144025036146): for october it is 1: 43 + 1 =
+        // step 5: add the month code (for jfmamjjasond: 144025036146): for october it is 1: 43 + 1 =
         switch (this.month)
         {
             case JAN, SEP, DEC -> thisMonthCode = MONTH_CODE_1;
@@ -330,13 +328,12 @@ public class Date
         return fullDate;
     }
 
-    /*
+    /**
      * Validates the year input to ensure it falls within the permissible range.
      * The valid range is from MINIMUM_YEAR (1800) to CURRENT_YEAR (2025), inclusive,
      * as specified in the lab requirements.
      *
      * @param year the year to validate
-     * @throws IllegalArgumentException if the year is outside the valid range
      */
     private static void validateYear(final int year)
     {
@@ -347,7 +344,7 @@ public class Date
         }
     }
 
-    /*
+    /**
      * Determines if the given year is a leap year based on Gregorian calendar rules:
      * - A year is a leap year if it is divisible by LEAP_YEAR_RULE (4).
      * - It is not a leap year if divisible by NON_LEAP_CENTURY_RULE (100),
@@ -377,7 +374,7 @@ public class Date
         }
     }
 
-    /*
+    /**
      * Validates the day input to ensure it is valid for the specified month and year.
      * The method checks:
      * - If the day is at least MINIMUM_DAY (1) and does not exceed MAX_DAY_LONG_MONTH (31).
@@ -393,7 +390,6 @@ public class Date
      * @param day the day to validate
      * @param month the month for which the day is being validated
      * @param year the year to consider for leap year checks
-     * @throws IllegalArgumentException if the day is invalid for the given month and year
      */
     private static void validateDay(final int day, final int month, final int year)
     {

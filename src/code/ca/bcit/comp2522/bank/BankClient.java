@@ -16,7 +16,7 @@ package ca.bcit.comp2522.bank;
  *     System.out.println(client.getDetails());
  * </pre>
  *
- * @author Nathan Oloresisimo
+ * @author Haider Al-Sudani, Arsh Mokha, Nathan Oloresisimo
  * @version 1.0
  */
 public class BankClient
