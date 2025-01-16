@@ -1,5 +1,24 @@
 package ca.bcit.comp2522.bank;
 
+/**
+ * Represents a bank client.
+ * <p>
+ * This class encapsulates information about a bank client, including their name,
+ * birth date, death date (if applicable), sign-up date, and client ID. It also provides
+ * methods to retrieve the client's details and full name, and to check if the client is alive.
+ * </p>
+ * Example usage:
+ * <pre>
+ *     Name clientName = new Name("John", "Doe");
+ *     Date birthDate = new Date(1990, 1, 1);
+ *     Date signUpDate = new Date(2020, 5, 15);
+ *     BankClient client = new BankClient(clientName, birthDate, signUpDate, "C12345");
+ *     System.out.println(client.getDetails());
+ * </pre>
+ *
+ * @author Nathan Oloresisimo
+ * @version 1.0
+ */
 public class BankClient
 {
     private static final String aliveMessage = "(alive)";
@@ -12,6 +31,15 @@ public class BankClient
     private final Date signUpDate;
     private final String clientID;
 
+    /**
+     * Constructs a BankClient with all details, including a death date.
+     *
+     * @param name the client's name.
+     * @param birthDate the client's birth date.
+     * @param deathDate the client's death date, or null if the client is alive.
+     * @param signUpDate the date the client signed up with the bank.
+     * @param clientID the unique identifier for the client.
+     */
     public BankClient(final Name name,
                       final Date birthDate,
                       final Date deathDate,
@@ -25,6 +53,14 @@ public class BankClient
         this.clientID = clientID;
     }
 
+    /**
+     * Constructs a BankClient who is still alive.
+     *
+     * @param name the client's name.
+     * @param birthDate the client's birth date.
+     * @param signUpDate the date the client signed up with the bank.
+     * @param clientID the unique identifier for the client.
+     */
     public BankClient(final Name name,
                       final Date birthDate,
                       final Date signUpDate,
@@ -33,7 +69,21 @@ public class BankClient
         this(name, birthDate, null, signUpDate, clientID);
     }
 
-
+    /**
+     * Retrieves the details of the bank client.
+     * <p>
+     * The details include the client's full name, client ID, their alive status,
+     * and the date they joined the bank.
+     * </p>
+     * Example usage:
+     * <pre>
+     *     BankClient client = new BankClient(name, birthDate, signUpDate, "C12345");
+     *     String details = client.getDetails();
+     *     System.out.println(details);
+     * </pre>
+     *
+     * @return a formatted String containing the client's details.
+     */
     public String getDetails() {
 
         final StringBuilder detailsBuilder;
@@ -58,7 +108,7 @@ public class BankClient
 
         detailsBuilder = new StringBuilder();
 
-        // StringBuilder usage
+
         detailsBuilder.append(fullName)
                       .append(" client ")
                       .append(clientID)
@@ -74,11 +124,23 @@ public class BankClient
                       .append(year)
                       .append(".");
 
-        // Return the final string
+
         return detailsBuilder.toString();
     }
 
-
+    /**
+     * Retrieves the full name of the client.
+     * <p>
+     * Example usage:
+     * <pre>
+     *     BankClient client = new BankClient(name, birthDate, signUpDate, "C12345");
+     *     String fullName = client.getFullName();
+     *     System.out.println(fullName);
+     * </pre>
+     * </p>
+     *
+     * @return the full name of the client as a String.
+     */
     public String getFullName()
     {
         final String fullName;
