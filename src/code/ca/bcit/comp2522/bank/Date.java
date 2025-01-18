@@ -37,7 +37,9 @@ package ca.bcit.comp2522.bank;
  *   <li>Invalid dates throw {@link IllegalArgumentException} during construction.</li>
  * </ul>
  *
- * @author Haider Al-Sudani, Arsh Mokha, Nathan Oloresisimo
+ * @author Haider Al-Sudani
+ * @author Arsh Mokha
+ * @author Nathan Oloresisimo
  * @version 1.0
  */
 public class Date
@@ -58,10 +60,24 @@ public class Date
     private static final int NOV = 11;
     private static final int DEC = 12;
 
+    private static final int JAN_CODE = 1;
+    private static final int FEB_CODE = 4;
+    private static final int MAR_CODE = 4;
+    private static final int APR_CODE = 0;
+    private static final int MAY_CODE = 2;
+    private static final int JUN_CODE = 5;
+    private static final int JUL_CODE = 0;
+    private static final int AUG_CODE = 3;
+    private static final int SEP_CODE = 6;
+    private static final int OCT_CODE = 1;
+    private static final int NOV_CODE = 4;
+    private static final int DEC_CODE = 6;
+
     private static final int MONTH_CODE_1 = 1;
     private static final int MONTH_CODE_2 = 2;
     private static final int MONTH_CODE_3 = 3;
     private static final int MONTH_CODE_4 = 4;
+    private static final int MONTH_CODE_5 = 5;
     private static final int MONTH_CODE_6 = 6;
     private static final int MONTH_CODE_0 = 0;
 
@@ -159,11 +175,22 @@ public class Date
         return monthAsString;
     }
 
+    /**
+     * Retrieves the day of the month.
+     *
+     * @return The day of the month stored in the `day` field.
+     */
     public int getDay()
     {
         return this.day;
     }
 
+    /**
+     * Formats the date fields (`year`, `month`, `day`)
+     * into a string in the format "YYYY-MM-DD".
+     *
+     * @return A string representing the date in the format "YYYY-MM-DD".
+     */
     public String getYYYYMMDD()
     {
         StringBuilder builder;
@@ -184,7 +211,7 @@ public class Date
     /**
      * Determines the day of the week for the current date.
      * Implements the lab's seven-step calculation process for the day of the week.
-     *
+     * <p>
      * To get the day of the week, do the following seven steps for dates in the 1900s:
      * e.g. October 31 1977:
      * step 1: calculate the number of twelves in 77:
@@ -203,6 +230,8 @@ public class Date
      * a) for January/February dates in leap years, add 6 at the start
      * b) for all dates in the 2000s, add 6 at the start
      * c) for all dates in the 1800s, add 2 at the start
+     * </p>
+     *
      * @return the name of the day (e.g., "Monday", "Tuesday")
      */
     public String getDayOfTheWeek()
@@ -240,13 +269,23 @@ public class Date
             fullYear += TWENTY_FIRST_CENTURY_OFFSET;
         }
 
-        lastTwoDigitsOfYear = fullYear - TWENTIETH_CENTURY;
+        if (year >= TWENTY_FIRST_CENTURY)
+        {
+            lastTwoDigitsOfYear = fullYear - TWENTY_FIRST_CENTURY;
+        }
+        else if(year >= TWENTIETH_CENTURY)
+        {
+            lastTwoDigitsOfYear = fullYear - TWENTIETH_CENTURY;
+        }
+        else
+        {
+            lastTwoDigitsOfYear = fullYear - NINETEENTH_CENTURY;
+        }
+
         numberOfTwelvesInYear = lastTwoDigitsOfYear / DIVISOR_FOR_TWELVES_IN_YEAR;
 
 //      step 2: calculate the remainder from step 1: 77 - 12*6 = 77 - 72 =
-        yearRemainderAfterTwelves = lastTwoDigitsOfYear -
-                                    (DIVISOR_FOR_TWELVES_IN_YEAR *
-                                     numberOfTwelvesInYear);
+        yearRemainderAfterTwelves = lastTwoDigitsOfYear % DIVISOR_FOR_TWELVES_IN_YEAR;
 
 //      step 3: calculate the number of fours in step 2: 5/4 = 1.25, so
         numOfFoursInRemainder = yearRemainderAfterTwelves / DIVISOR_FOR_FOURS_IN_REMAINDER;
@@ -259,14 +298,21 @@ public class Date
         // step 5: add the month code (for jfmamjjasond: 144025036146): for october it is 1: 43 + 1 =
         switch (this.month)
         {
-            case JAN, SEP, DEC -> thisMonthCode = MONTH_CODE_1;
-            case FEB, MAR, OCT -> thisMonthCode = MONTH_CODE_4;
-            case APR, JUN -> thisMonthCode = MONTH_CODE_0;
-            case MAY -> thisMonthCode = MONTH_CODE_2;
-            case JUL -> thisMonthCode = MONTH_CODE_3;
-            case AUG, NOV -> thisMonthCode = MONTH_CODE_6;
-            default -> throw new IllegalArgumentException("Inavlid month: " + this.month);
+            case JAN -> thisMonthCode = JAN_CODE;
+            case FEB -> thisMonthCode = FEB_CODE;
+            case MAR -> thisMonthCode = MAR_CODE;
+            case APR -> thisMonthCode = APR_CODE;
+            case MAY -> thisMonthCode = MAY_CODE;
+            case JUN -> thisMonthCode = JUN_CODE;
+            case JUL -> thisMonthCode = JUL_CODE;
+            case AUG -> thisMonthCode = AUG_CODE;
+            case SEP -> thisMonthCode = SEP_CODE;
+            case OCT -> thisMonthCode = OCT_CODE;
+            case NOV -> thisMonthCode = NOV_CODE;
+            case DEC -> thisMonthCode = DEC_CODE;
+            default -> throw new IllegalArgumentException("Invalid month: " + this.month);
         }
+
         totalWithMonthCode = totalWithoutMonthCode + thisMonthCode;
 
 //      step 6: add the previous five numbers: (44) and mod by 7: 44%7 = 2 (44/7 = 6 remainder 2)
@@ -288,16 +334,18 @@ public class Date
     }
 
     /**
+     * <p>
      * Returns a formatted string of the date, including the day of the week,
      * month name, day of the month, and year.
-     *
+     * </p>
      * Example:
      * - "Monday October 31, 1977"
      * - "Monday March 15, 2021"
      *
+     * <p>
      * The method computes the day of the week, retrieves the month name,
      * and formats the full date as a readable string.
-     *
+     * </p>
      * @return a formatted string (e.g., "Monday October 31, 1977")
      */
     public String getFullDate()
@@ -328,7 +376,7 @@ public class Date
         return fullDate;
     }
 
-    /**
+    /*
      * Validates the year input to ensure it falls within the permissible range.
      * The valid range is from MINIMUM_YEAR (1800) to CURRENT_YEAR (2025), inclusive,
      * as specified in the lab requirements.
@@ -344,7 +392,7 @@ public class Date
         }
     }
 
-    /**
+    /*
      * Determines if the given year is a leap year based on Gregorian calendar rules:
      * - A year is a leap year if it is divisible by LEAP_YEAR_RULE (4).
      * - It is not a leap year if divisible by NON_LEAP_CENTURY_RULE (100),
@@ -365,6 +413,11 @@ public class Date
                 year % LEAP_CENTURY_RULE == NO_REMAINDER));
     }
 
+    /*
+     * Validates whether the given month is within the valid range.
+     *
+     * @param month The month to validate.
+     */
     private static void validateMonth(final int month)
     {
         if (month < JAN ||
@@ -374,7 +427,7 @@ public class Date
         }
     }
 
-    /**
+    /*
      * Validates the day input to ensure it is valid for the specified month and year.
      * The method checks:
      * - If the day is at least MINIMUM_DAY (1) and does not exceed MAX_DAY_LONG_MONTH (31).

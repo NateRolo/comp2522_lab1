@@ -13,7 +13,9 @@ package ca.bcit.comp2522.bank;
  *     String initials = name.getInitials();  // Output: J.D.
  * </pre>
  *
- * @author Haider Al-Sudani, Arsh Mokha, Nathan Oloresisimo
+ * @author Haider Al-Sudani
+ * @author Arsh Mokha
+ * @author Nathan Oloresisimo
  * @version 1.0
  */
 public class Name

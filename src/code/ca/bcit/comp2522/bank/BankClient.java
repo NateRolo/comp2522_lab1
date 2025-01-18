@@ -16,7 +16,9 @@ package ca.bcit.comp2522.bank;
  *     System.out.println(client.getDetails());
  * </pre>
  *
- * @author Haider Al-Sudani, Arsh Mokha, Nathan Oloresisimo
+ * @author Haider Al-Sudani
+ * @author Arsh Mokha
+ * @author Nathan Oloresisimo
  * @version 1.0
  */
 public class BankClient
@@ -150,6 +152,13 @@ public class BankClient
         return fullName;
     }
 
+    /*
+     * Checks if the object is considered "alive" based on its `deathDate`.
+     *
+     * @return A message indicating whether the object is alive or not:
+     *         - Returns `aliveMessage` if `deathDate` is null.
+     *         - Returns `notAliveMessage` otherwise.
+     */
     private String isAlive()
     {
         if (this.deathDate == null)

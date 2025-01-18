@@ -15,7 +15,9 @@ package ca.bcit.comp2522.bank;
  *     account.withdraw(100.0, 1234);
  * </pre>
  *
- * @author Haider Al-Sudani, Arsh Mokha, Nathan Oloresisimo
+ * @author Haider Al-Sudani
+ * @author Arsh Mokha
+ * @author Nathan Oloresisimo
  * @version 1.0
  */
 public class BankAccount
@@ -91,7 +93,14 @@ public class BankAccount
         {
             throw new IllegalArgumentException("Incorrect pin: " + pinToMatch);
         }
+
+        if (depositUsd < 0)
+        {
+            throw new IllegalArgumentException("Cannot deposit negative amount.");
+        }
+
         balanceUsd += depositUsd;
+
     }
     /*
      * Withdraws a specified amount from the account without PIN verification.

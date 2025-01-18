@@ -41,11 +41,11 @@ public class Main
      *     <li>Jackie Chan - Account still open</li>
      * </ul>
      *
-     * @param args command-line arguments (not used).
+     * @param args command-line arguments (not used)
      */
     public static void main(final String[] args) {
         setupAndPrintAccountDetails(
-                new Name("Albert", "Einstein"),
+                new Name("", ""),
                 new Date(1879, 3, 14),
                 new Date(1955, 4, 18),
                 "#abc123",
@@ -87,6 +87,7 @@ public class Main
                 1954,
                 3000,
                 500);
+
     }
 
 

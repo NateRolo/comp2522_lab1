@@ -10,5 +10,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bluecatcode.junit.4.10.extended" level="project" />
+    <orderEntry type="library" exported="" name="junit.jupiter" level="project" />
   </component>
 </module>
